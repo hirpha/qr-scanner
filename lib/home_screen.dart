@@ -16,6 +16,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
+  generat() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => QRGeneratorScreen()),
+    );
+  }
+
+  scan() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => QRScannerScreen()),
+    );
+  }
+
   @override
   void reassemble() {
     if (Platform.isAndroid) {
@@ -50,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 alignment: Alignment.center,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Color.fromARGB(255, 2, 35, 62),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
@@ -88,13 +102,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20,
                   children: [
-                    MenuButton(iconPath: 'assets/qr.png', label: 'Scanner'),
                     MenuButton(
-                        iconPath: 'assets/history.jpeg', label: 'History'),
+                        iconPath: 'assets/qr.png',
+                        label: 'Scanner',
+                        callback: scan),
                     MenuButton(
-                        iconPath: 'assets/generate.jpeg', label: 'Generate'),
+                        iconPath: 'assets/history.jpeg',
+                        label: 'History',
+                        callback: () {}),
                     MenuButton(
-                        iconPath: 'assets/barcode.png', label: 'Setting'),
+                        iconPath: 'assets/generate.jpeg',
+                        label: 'Generate',
+                        callback: generat),
+                    MenuButton(
+                        iconPath: 'assets/barcode.png',
+                        label: 'Setting',
+                        callback: () {}),
                   ],
                 ),
               ),
@@ -109,17 +132,16 @@ class _HomeScreenState extends State<HomeScreen> {
 class MenuButton extends StatelessWidget {
   final String iconPath;
   final String label;
+  final Function callback;
 
-  MenuButton({required this.iconPath, required this.label});
+  MenuButton(
+      {required this.iconPath, required this.label, required this.callback});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => QRGeneratorScreen()),
-        );
+        callback();
       },
       child: Container(
         decoration: BoxDecoration(

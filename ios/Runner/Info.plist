@@ -33,6 +33,12 @@
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs camera access to scan QR codes</string>
 	
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your photo library to save QR codes.</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>We need access to save files.</string>
+
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
