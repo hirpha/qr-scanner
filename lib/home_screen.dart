@@ -107,17 +107,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         label: 'Scanner',
                         callback: scan),
                     MenuButton(
-                        iconPath: 'assets/history.jpeg',
-                        label: 'History',
-                        callback: () {}),
+                        iconPath: 'history', label: 'History', callback: () {}),
                     MenuButton(
                         iconPath: 'assets/generate.jpeg',
                         label: 'Generate',
                         callback: generat),
                     MenuButton(
-                        iconPath: 'assets/barcode.png',
-                        label: 'Setting',
-                        callback: () {}),
+                        iconPath: 'setting', label: 'Setting', callback: () {}),
                   ],
                 ),
               ),
@@ -163,12 +159,16 @@ class MenuButton extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: Color(0xFFF2F2F2),
               ),
-              padding: const EdgeInsets.all(15),
-              child: Image.asset(
-                iconPath,
-                height: 60,
-                width: 60,
-              ),
+              padding: EdgeInsets.all(15),
+              child: iconPath == "history"
+                  ? Icon(Icons.history)
+                  : iconPath == "setting"
+                      ? Icon(Icons.settings)
+                      : Image.asset(
+                          iconPath,
+                          height: 60,
+                          width: 60,
+                        ),
             ),
             SizedBox(height: 10),
             Text(

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -45,10 +44,19 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
           ),
           Expanded(
             flex: 1,
-            child: Center(
-              child: (result != null)
-                  ? Text('Result: ${result!.code}')
-                  : Text('Scan a code'),
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: Center(
+                child: (result != null)
+                    ? Text(
+                        'Result: ${result!.code}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue,
+                            fontSize: 16),
+                      )
+                    : Text('Please scan the code'),
+              ),
             ),
           ),
         ],
